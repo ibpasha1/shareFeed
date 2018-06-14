@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+   </head>
+   <body>
+      <div style="padding:5rem;">
+         <form id="push" method="POST">
+            <ul class="collection with-header">
+               <li class="collection-header">
+                  <h4>Store Name</h4>
+               </li>
+               <li class="collection-item">
+                  <div>
+                     <div class="input-field col s6">
+                        <input placeholder="Store Name" id="store_name" type="text" class="validate">
+                     </div>
+                  </div>
+               </li>
+               <li class="collection-header">
+                  <h4>Store Url</h4>
+               </li>
+               <li class="collection-item">
+                  <div>
+                     <div class="input-field col s6">
+                        <input placeholder="Store Url" id="store_url" type="text" class="validate">
+                     </div>
+                  </div>
+               </li>
+               <li class="collection-header">
+                  <h4>Client ID</h4>
+               </li>
+               <li class="collection-item">
+                  <div>
+                     <div class="input-field col s6">
+                        <input placeholder="Client ID" id="client_id" type="text" class="validate">
+                     </div>
+                  </div>
+               </li>
+               <li class="collection-header">
+                  <h4>API Key</h4>
+               </li>
+               <li class="collection-item">
+                  <div>
+                     <div class="input-field col s6">
+                        <input placeholder="API Key" id="api_key" type="password" class="validate">
+                     </div>
+                  </div>
+               </li>
+               <label>
+               <input class="with-gap"    name="api_type"   value="amazon_product" type="radio"/>
+               <span>Amazon Product</span>
+               </label>
+               </p>
+               <p>
+                  <label>
+                  <input class="with-gap" name="api_type"  value="google_product" type="radio"/>
+                  <span>Google Product</span>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                  <input class="with-gap" name="api_type"  value="facebook_product" type="radio"/>
+                  <span>Facebook Product</span>
+                  </label>
+               </p>
+               <p>
+                  <label>
+                  <input class="with-gap" name="api_type"   value="sharesale_product" type="radio"/>
+                  <span>Share Sale Product</span>
+                  </label>
+               </p>
+              <button type="button" id="create_feed" type="submit">Create Feed</button>
+
+            </ul>
+            <p>
+         </form>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+   </body>
+</html>
+<script text="text/javascript">
+   function submit() {
+       $.ajax({
+         url: '/shareFeed.php',
+         data: $('#push').serialize(),
+         type: 'POST',
+         success: function(response) {
+           console.log(response);
+         },
+         error: function(error) {
+           console.log(error);
+         }
+       });
+     }
+</script>
